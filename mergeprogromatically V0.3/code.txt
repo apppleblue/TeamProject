@@ -1,0 +1,98 @@
+
+        //var hold=arShapeid[0];
+        var imageObj = new Image();
+        function load1(imageObj){
+            //for(var i =0;i<arShapeid.length;i++){
+            var hold = new Konva.Image({
+                x:arXpos[0],
+                y:arYpos[0],
+                image: imageObj,
+                width:arSwidth[0],
+                height:arSheight[0],
+                scaleX:arXscale[0],
+                scaleY:arYscale[0],
+                rotation:arRotation[0],
+                draggable:true
+            });
+            layer.add(hold);
+            layer.draw();
+            console.log(layer);
+            stage.add(layer);
+            console.log(stage);
+            console.log(hold);
+
+
+            //}
+            //layer.draw();
+
+        }
+        load1(imageObj);
+        imageObj.src = '/Assets/test.jpg';
+
+
+
+        <script>
+            function load(){
+                var grabImages = layer.find('Image');
+                var arShapeid = [];
+                var arXpos = [];
+                var arYpos = [];
+                var arSwidth = [];
+                var arSheight = [];
+                var arXscale = [];
+                var arYscale = [];
+                var arRotation = [];
+                function getArray(callback) {
+                    var xmlhttp = new XMLHttpRequest();
+                    xmlhttp.onreadystatechange=function(){
+                        if(xmlhttp.readyState===4){ //request done
+                            console.log("request =4");
+                            if(xmlhttp.status===200){//successfully
+                                var data = JSON.parse(xmlhttp.responseText);
+                                callback (data);
+                            }else{console.log(xmlhttp.status);}
+                        }
+                    };
+                    xmlhttp.open("GET","loadajax.php?q=true",true);
+                    xmlhttp.send();
+
+                }
+                getArray(function (resultt) {
+                    result = Object.keys(resultt).map(function (key) {
+                        return [Number(key), resultt[key]];
+                    })
+                    console.log(result);
+                    for(var j=0;j<result.length;j++){
+                        arShapeid[j]=result[j][1]['shapeid'];
+                        arXpos[j]=result[j][1]['xpos'];
+                        arYpos[j]=result[j][1]['ypos'];
+                        arSwidth[j]=result[j][1]['swidth'];
+                        arSheight[j]=result[j][1]['sheight'];
+                        arXscale[j]=result[j][1]['xscale'];
+                        arYscale[j]=result[j][1]['yscale'];
+                        arRotation[j]=result[j][1]['rotations'];
+                    }
+                    /*
+                    for(var i=0;i<arShapeid.length;i++){
+                        console.log(arShapeid[i]);
+                        switch(arShapeid[i]){
+                            case 137:
+                            imageObj.src = '/Assets/test.jpg';
+                            break;
+                            case 136:
+                            imageObj.src = '/Assets/square.jpg';
+                            break;
+                        }
+                    }
+                    */
+
+                })
+                console.log("before ");
+                Konva.Image.fromURL('/Assets/test.jpg', function (image) {
+                    console.log('check');
+                    layer.add(image);
+                    layer.draw();
+                });
+                console.log("after ");
+            }
+        </script>

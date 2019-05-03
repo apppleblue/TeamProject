@@ -1,0 +1,12 @@
+goals
+
+drag image from sidebar onto page
+	create konva image at that point
+	
+drag other image from sidebar onto page 
+	create konva square at that point
+	
+console log image&square height&width&rotation upon transformend
+console log image&square x&y position on end of drag and transformend
+
+on submit button send variables into database from self

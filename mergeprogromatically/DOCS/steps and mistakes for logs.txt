@@ -1,0 +1,51 @@
+
+
+
+known bugs
+
+	xpos and ypos dont update on dragend, only on transform/rotate.
+
+	height and width not displayed for dev purposes.
+	
+	boundBoxfunction is inappropriate for setting transformer in current hard value form, if decimal bug comes
+	back through testing then max values can be set to canvas size as quick fix.
+	
+	side bar should be smaller with tabulation the side instead of the top
+	
+	
+
+development stages
+
+	drag and drop
+
+		getting sidebar integrated
+
+			*myscript.js link was forgotten so tab didnt fill
+
+
+		getting image to drag and drop
+
+			getting image on sidebar
+
+				*forgot to add image into folder for drag and drop
+				*image to large
+
+			getting image to drop onto canvas
+
+			reducing size of image on canvas------
+			
+				*image appears same size, boundboxfunc only affects it after transforming the image
+				*forceUpdate(); doesnt work
+				
+
+		getting image variables to save into database
+
+
+		getting image variables to load from database
+
+
+		getting custom shape to spawn where its equivelent image has been dragged to 
+
+
+
+
